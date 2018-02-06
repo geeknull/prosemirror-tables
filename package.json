@@ -20,11 +20,12 @@
     }
   ],
   "dependencies": {
+    "prosemirror-example-setup": "^1.0.1",
     "prosemirror-keymap": "^1.0.0",
     "prosemirror-model": "^1.0.0",
     "prosemirror-state": "^1.0.0",
     "prosemirror-transform": "^1.0.0",
-    "prosemirror-view": "^1.0.0"
+    "prosemirror-view": "^1.0.10"
   },
   "devDependencies": {
     "ist": "^1.0.1",

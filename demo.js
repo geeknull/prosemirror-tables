@@ -6,6 +6,7 @@ import {baseKeymap}  from "prosemirror-commands"
 import {keymap}  from "prosemirror-keymap"
 import {exampleSetup, buildMenuItems}  from "prosemirror-example-setup"
 import {MenuItem, Dropdown}  from "prosemirror-menu"
+import {addListNodes} from "prosemirror-schema-list"
 
 import {addColumnAfter, addColumnBefore, deleteColumn, addRowAfter, addRowBefore, deleteRow,
         mergeCells, splitCell, setCellAttr, toggleHeaderRow, toggleHeaderColumn, toggleHeaderCell,
@@ -13,7 +14,7 @@ import {addColumnAfter, addColumnBefore, deleteColumn, addRowAfter, addRowBefore
 import {tableEditing, columnResizing, tableNodes, fixTables}  from "./src"
 
 let schema = new Schema({
-  nodes: baseSchema.spec.nodes.append(tableNodes({
+  nodes: addListNodes(baseSchema.spec.nodes.append(tableNodes({
     tableGroup: "block",
     cellContent: "block+",
     cellAttributes: {
@@ -23,7 +24,7 @@ let schema = new Schema({
         setDOMAttr(value, attrs) { if (value) attrs.style = (attrs.style || "") + `background-color: ${value};` }
       }
     }
-  })),
+  })), "paragraph block*", "block"),
   marks: baseSchema.spec.marks
 })
 
